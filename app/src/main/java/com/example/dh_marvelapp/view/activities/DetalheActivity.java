@@ -34,9 +34,9 @@ public class DetalheActivity extends AppCompatActivity {
             Picasso.get().load(result.getThumbnail().getPath() + "portrait_uncanny" + result.getThumbnail().getExtension()).into(imgHQ);
             txtTitulo.setText(result.getTitle());
             txtDescricao.setText(result.getDescription());
-            txtData.setText(result.getIssueNumber());
-            txtValor.setText(result.getIssueNumber());
-            txtPaginas.setText(result.getIssueNumber());
+//            txtData.setText(result.getDates());
+//            txtValor.setText(result.getPrices());
+            txtPaginas.setText(result.getPageCount());
         }
 
         btnVoltar.setOnClickListener(v -> {

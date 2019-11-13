@@ -66,15 +66,17 @@ public class MainActivity extends AppCompatActivity implements OnClick {
         });
     }
 
-    public void getTimeStamp() {
+    public static String getTimeStamp() {
         java.util.Date date = new java.util.Date();
         long ts = date.getTime();
+        return ts + "";
     }
 
-    public void getHash() {
+    public static String getHash() {
         java.util.Date date = new java.util.Date();
         long ts = date.getTime();
-        String hash = md5(ts + "21d520301d5067c31602703029a12ceeabeaa33e" + "07d51416d59a89ee5cd79f7f4308bc4a");
+        String hash = md5(ts + PRIVATE_API_KEY + PUBLIC_API_KEY);
+        return hash + "";
     }
 
     public void initViews() {

@@ -1,4 +1,4 @@
-package com.example.dh_marvelapp;
+package com.example.dh_marvelapp.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.dh_marvelapp.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

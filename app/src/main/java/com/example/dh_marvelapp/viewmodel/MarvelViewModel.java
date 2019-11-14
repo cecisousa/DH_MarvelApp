@@ -23,31 +23,24 @@ public class MarvelViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Result>> listaComics = new MutableLiveData<>();
     private MutableLiveData<Boolean> loading = new MutableLiveData<>();
-    private MutableLiveData<String> comicsLiveDataError = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();
     private MarvelRepository repository = new MarvelRepository();
-    public static final String PUBLIC_API_KEY = "6eb7e8896ec5850c52515a8a23ee97f0";
-    public static final String PRIVATE_API_KEY = "0dd0c16fedb8a02985977eafca66b49f5e6a526f";
+    private static final String PUBLIC_API_KEY = "6eb7e8896ec5850c52515a8a23ee97f0";
+    private static final String PRIVATE_API_KEY = "0dd0c16fedb8a02985977eafca66b49f5e6a526f";
     String ts = Long.toString(System.currentTimeMillis() / 1000);
     String hash = md5(ts + PRIVATE_API_KEY + PUBLIC_API_KEY);
-
-
 
     public MarvelViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<List<com.example.dh_marvelapp.model.pojos.Result>> getListaComics() {
+    public LiveData<List<Result>> getListaComics() {
         return this.listaComics;
     }
 
     public LiveData<Boolean> getLoading() {
         return this.loading;
     }
-
-//    public LiveData<String> getErrorAlbum(){
-//        return this.comicsLiveDataError;
-//    }
 
     public void getAllComics() {
         disposable.add(

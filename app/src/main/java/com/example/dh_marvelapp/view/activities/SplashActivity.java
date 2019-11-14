@@ -24,11 +24,8 @@ public class SplashActivity extends AppCompatActivity {
 
         splash = findViewById(R.id.imageSplash);
 
-        splash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                jump();
-            }
+        splash.setOnClickListener(v -> {
+            jump();
         });
 
         timer.schedule(new TimerTask() {

@@ -18,10 +18,10 @@ import java.util.List;
 
 public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecyclerViewAdapter.ViewHolder> {
 
-    private List<com.example.dh_marvelapp.model.pojos.Result> listaResults;
+    private List<Result> listaResults;
     private OnClick listener;
 
-    public MarvelRecyclerViewAdapter (List<com.example.dh_marvelapp.model.pojos.Result> listaResults, OnClick listener) {
+    public MarvelRecyclerViewAdapter (List<Result> listaResults, OnClick listener) {
         this.listaResults = listaResults;
         this.listener = listener;
     }
@@ -35,7 +35,7 @@ public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final com.example.dh_marvelapp.model.pojos.Result result = listaResults.get((position));
+        final Result result = listaResults.get((position));
         holder.onBind(result);
 
         holder.itemView.setOnClickListener(v -> listener.click(result));
@@ -46,7 +46,7 @@ public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecycl
         return listaResults.size();
     }
 
-    public void atualizaLista(List<com.example.dh_marvelapp.model.pojos.Result> novaLista) {
+    public void atualizaLista(List<Result> novaLista) {
         this.listaResults.clear();
         this.listaResults = novaLista;
         notifyDataSetChanged();

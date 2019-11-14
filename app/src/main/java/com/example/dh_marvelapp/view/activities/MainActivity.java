@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements OnClick {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private MarvelViewModel viewModel;
-    private List<com.example.dh_marvelapp.model.pojos.Result> listaResults = new ArrayList<>();
+    private List<Result> listaResults = new ArrayList<>();
     private MarvelRecyclerViewAdapter adapter;
 
     @Override
@@ -50,9 +50,6 @@ public class MainActivity extends AppCompatActivity implements OnClick {
             }
         });
 
-//        viewModel.getErrorAlbum().observe(this, error -> {
-//            Log.i("Log", "Error: " + th)
-//        });
     }
 
 

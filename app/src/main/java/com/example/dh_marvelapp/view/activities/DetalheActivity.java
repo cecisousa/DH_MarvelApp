@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.dh_marvelapp.R;
 import com.example.dh_marvelapp.model.pojos.Result;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
 
 public class DetalheActivity extends AppCompatActivity {
 
@@ -30,11 +31,11 @@ public class DetalheActivity extends AppCompatActivity {
 
         if (getIntent() != null) {
             Result result = getIntent().getParcelableExtra("Result");
-//            Picasso.get().load(result.getThumbnail().getPath() + "jpg").into(imgHQ);
+//            Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(imgHQ);
             txtTitulo.setText(result.getTitle());
             txtDescricao.setText(result.getDescription());
 //            txtData.setText(result.getDates());
-//            txtValor.setText(result.getPrices());
+//            txtValor.setText(result.getPrices().get(0).getPrice().toString());
 //            txtPaginas.setText(result.getPageCount());
         }
 

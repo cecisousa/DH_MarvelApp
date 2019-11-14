@@ -65,7 +65,7 @@ public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecycl
         }
 
         public void onBind (Result result) {
-            Picasso.get().load(result.getThumbnail().getPath() + "jpg").into(imagem);
+            Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(imagem);
             texto.setText("#" + result.getIssueNumber());
         }
     }

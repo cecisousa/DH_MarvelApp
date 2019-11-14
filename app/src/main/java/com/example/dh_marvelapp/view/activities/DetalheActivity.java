@@ -37,6 +37,9 @@ public class DetalheActivity extends AppCompatActivity {
             txtDescricao.setText(result.getDescription());
             txtData.setText(result.getDates().get(0).getDate());
             txtValor.setText("US$ " + result.getPrices().get(0).getPrice());
+
+
+
             txtPaginas.setText(result.getPageCount().toString() + " pages");
 
             imagem.setOnClickListener(v -> {

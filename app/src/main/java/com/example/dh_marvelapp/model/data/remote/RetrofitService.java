@@ -24,12 +24,11 @@ public class RetrofitService {
             httpClient.connectTimeout(30, TimeUnit.SECONDS);
             httpClient.writeTimeout(30, TimeUnit.SECONDS);
 
-            if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
                 httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
                 httpClient.addInterceptor(httpLoggingInterceptor);
                 httpClient.addNetworkInterceptor(new StethoInterceptor());
-            }
+
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

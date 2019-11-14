@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 
 public class DetalheActivity extends AppCompatActivity {
 
-    private ImageView imgHQ;
+    private ImageView imagem;
     private TextView txtTitulo;
     private TextView txtDescricao;
     private TextView txtData;
@@ -31,12 +31,17 @@ public class DetalheActivity extends AppCompatActivity {
 
         if (getIntent() != null) {
             Result result = getIntent().getParcelableExtra("Result");
-//            Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(imgHQ);
+//            Picasso.get()
+//                    .load(result.getThumbnail().getPath())
+//                    .placeholder(R.drawable.aranha)
+//                    .error(R.drawable.aranha)
+//                    .into(imagem);
+
             txtTitulo.setText(result.getTitle());
             txtDescricao.setText(result.getDescription());
-//            txtData.setText(result.getDates());
-//            txtValor.setText(result.getPrices().get(0).getPrice().toString());
-//            txtPaginas.setText(result.getPageCount());
+//            txtData.setText(result.getDates().get(0).getDate());
+//            txtValor.setText("US$ " + result.getPrices().get(0).getPrice());
+            txtPaginas.setText(result.getPageCount().toString() + " pages");
         }
 
         btnVoltar.setOnClickListener(v -> {
@@ -47,7 +52,7 @@ public class DetalheActivity extends AppCompatActivity {
     }
 
     public void initViews() {
-        imgHQ = findViewById(R.id.imgHQ);
+        imagem = findViewById(R.id.imgHQ);
         txtTitulo= findViewById(R.id.txtTitulo);
         txtDescricao= findViewById(R.id.txtDescricao);
         txtData= findViewById(R.id.txtData);

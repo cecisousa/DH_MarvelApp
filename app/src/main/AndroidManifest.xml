@@ -11,9 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".view.activities.DetalheActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".view.activities.DetalheImagemActivity"></activity>
+        <activity android:name=".view.activities.DetalheActivity" />
         <activity android:name=".view.activities.MainActivity" />
         <activity android:name=".view.activities.SplashActivity">
             <intent-filter>

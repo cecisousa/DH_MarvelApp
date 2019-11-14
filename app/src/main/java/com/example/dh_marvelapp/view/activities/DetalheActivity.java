@@ -31,17 +31,21 @@ public class DetalheActivity extends AppCompatActivity {
 
         if (getIntent() != null) {
             Result result = getIntent().getParcelableExtra("Result");
-//            Picasso.get()
-//                    .load(result.getThumbnail().getPath())
-//                    .placeholder(R.drawable.aranha)
-//                    .error(R.drawable.aranha)
-//                    .into(imagem);
+            Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(imagem);
 
             txtTitulo.setText(result.getTitle());
             txtDescricao.setText(result.getDescription());
-//            txtData.setText(result.getDates().get(0).getDate());
-//            txtValor.setText("US$ " + result.getPrices().get(0).getPrice());
+            txtData.setText(result.getDates().get(0).getDate());
+            txtValor.setText("US$ " + result.getPrices().get(0).getPrice());
             txtPaginas.setText(result.getPageCount().toString() + " pages");
+
+            imagem.setOnClickListener(v -> {
+                Intent intent = new Intent(DetalheActivity.this, DetalheImagemActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("Result", result);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            });
         }
 
         btnVoltar.setOnClickListener(v -> {

@@ -1,6 +1,7 @@
 package com.example.dh_marvelapp.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -16,6 +17,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.example.dh_marvelapp.model.data.util.AppUtil.md5;
+
 public class MarvelViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Result>> listaComics = new MutableLiveData<>();
@@ -23,13 +26,18 @@ public class MarvelViewModel extends AndroidViewModel {
     private MutableLiveData<String> comicsLiveDataError = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();
     private MarvelRepository repository = new MarvelRepository();
+    public static final String PUBLIC_API_KEY = "6eb7e8896ec5850c52515a8a23ee97f0";
+    public static final String PRIVATE_API_KEY = "0dd0c16fedb8a02985977eafca66b49f5e6a526f";
+    String ts = Long.toString(System.currentTimeMillis() / 1000);
+    String hash = md5(ts + PRIVATE_API_KEY + PUBLIC_API_KEY);
+
 
 
     public MarvelViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<List<Result>> getListaComics() {
+    public LiveData<List<com.example.dh_marvelapp.model.pojos.Result>> getListaComics() {
         return this.listaComics;
     }
 
@@ -37,13 +45,13 @@ public class MarvelViewModel extends AndroidViewModel {
         return this.loading;
     }
 
-    public LiveData<String> getErrorAlbum(){
-        return this.comicsLiveDataError;
-    }
+//    public LiveData<String> getErrorAlbum(){
+//        return this.comicsLiveDataError;
+//    }
 
-    public void getAllComics(String format, String formatType, Boolean noVariants,String title, String orderBy, Integer limit, String ts, String hash,String apiKey) {
+    public void getAllComics() {
         disposable.add(
-              repository.getComics(format, formatType, noVariants, title, orderBy, limit, ts, hash, apiKey)
+              repository.getComics("magazine", "comic", true, "focDate", "50", ts, hash, PUBLIC_API_KEY)
               .subscribeOn(Schedulers.io())
               .observeOn(AndroidSchedulers.mainThread())
               .doOnSubscribe(disposable1 -> loading.setValue(true))
@@ -51,7 +59,7 @@ public class MarvelViewModel extends AndroidViewModel {
               .subscribe(comicsResult -> {
                   listaComics.setValue(comicsResult.getData().getResults());
               }, throwable -> {
-                  comicsLiveDataError.setValue(throwable.getMessage());
+                  Log.i("Log", "Error: " + throwable.getMessage());
               })
         );
     }

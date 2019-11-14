@@ -18,10 +18,10 @@ import java.util.List;
 
 public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecyclerViewAdapter.ViewHolder> {
 
-    private List<Result> listaResults;
+    private List<com.example.dh_marvelapp.model.pojos.Result> listaResults;
     private OnClick listener;
 
-    public MarvelRecyclerViewAdapter (List<Result> listaResults, OnClick listener) {
+    public MarvelRecyclerViewAdapter (List<com.example.dh_marvelapp.model.pojos.Result> listaResults, OnClick listener) {
         this.listaResults = listaResults;
         this.listener = listener;
     }
@@ -35,8 +35,9 @@ public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final Result result = listaResults.get(position);
+        final com.example.dh_marvelapp.model.pojos.Result result = listaResults.get((position));
         holder.onBind(result);
+
         holder.itemView.setOnClickListener(v -> listener.click(result));
     }
 
@@ -45,7 +46,7 @@ public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecycl
         return listaResults.size();
     }
 
-    public void atualizaLista(List<Result> novaLista) {
+    public void atualizaLista(List<com.example.dh_marvelapp.model.pojos.Result> novaLista) {
         this.listaResults.clear();
         this.listaResults = novaLista;
         notifyDataSetChanged();
@@ -64,7 +65,7 @@ public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecycl
         }
 
         public void onBind (Result result) {
-            Picasso.get().load(result.getThumbnail().getPath() + "portrait_uncanny" + result.getThumbnail().getExtension()).into(imagem);
+            Picasso.get().load(result.getThumbnail().getPath() + "jpg").into(imagem);
             texto.setText("#" + result.getIssueNumber());
         }
     }

@@ -2,7 +2,6 @@ package com.example.dh_marvelapp.model.data.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 
 public class AppUtil {
 
@@ -31,14 +30,6 @@ public class AppUtil {
             e.printStackTrace();
         }
         return "";
-    }
-
-    public static String getHash() {
-        Date date = new Date();
-        long ts = date.getTime();
-        String hash = md5(ts + "21d520301d5067c31602703029a12ceeabeaa33e" + "07d51416d59a89ee5cd79f7f4308bc4a");
-        System.out.println(hash);
-        return "ts=" + ts + "&hash=" + hash;
     }
 
 }

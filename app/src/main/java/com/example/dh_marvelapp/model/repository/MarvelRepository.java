@@ -1,6 +1,6 @@
 package com.example.dh_marvelapp.model.repository;
 
-import com.example.dh_marvelapp.model.pojos.Comics;
+import com.example.dh_marvelapp.model.pojos.ComicsResult;
 
 import io.reactivex.Observable;
 
@@ -8,8 +8,8 @@ import static com.example.dh_marvelapp.model.data.remote.RetrofitService.getApiS
 
 public class MarvelRepository {
 
-    public Observable<Comics> getComics(String format, String formatType, Boolean noVariants,String title, String orderBy, Integer limit, String ts, String hash,String apiKey) {
-        return getApiService().getAllComics(format, formatType, noVariants, title, orderBy, limit, ts, hash, apiKey);
+    public Observable<ComicsResult> getComics(String format, String formatType, boolean noVariants, String orderBy, String limit, String ts, String hash, String apiKey) {
+        return getApiService().getAllComics(format, formatType, noVariants,orderBy, limit, ts, hash, apiKey);
     }
 }
 

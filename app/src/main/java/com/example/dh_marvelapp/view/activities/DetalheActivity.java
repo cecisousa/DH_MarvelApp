@@ -1,11 +1,11 @@
 package com.example.dh_marvelapp.view.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dh_marvelapp.R;
 import com.example.dh_marvelapp.model.pojos.Result;
@@ -31,11 +31,18 @@ public class DetalheActivity extends AppCompatActivity {
 
         if (getIntent() != null) {
             Result result = getIntent().getParcelableExtra("Result");
+
             Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(imagem);
+
             txtTitulo.setText(result.getTitle());
             txtDescricao.setText(result.getDescription());
-            txtData.setText(result.getDates().get(0).getDate());
-            txtValor.setText("US$ " + result.getPrices().get(0).getPrice());
+
+            String dataISO = result.getDates().get(0).getDate().split("T")[0];
+            String[] dates = dataISO.split("-");
+            String dataUsuario = dates[2] + "/" + dates[1] + "/" + dates[0];
+            txtData.setText(dataUsuario);
+
+            txtValor.setText("US$ " + String.format("%.2f", result.getPrices().get(0).getPrice()));
             txtPaginas.setText(result.getPageCount().toString() + " pages");
 
             imagem.setOnClickListener(v -> {

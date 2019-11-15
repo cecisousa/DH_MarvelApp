@@ -32,14 +32,10 @@ public class DetalheActivity extends AppCompatActivity {
         if (getIntent() != null) {
             Result result = getIntent().getParcelableExtra("Result");
             Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(imagem);
-
             txtTitulo.setText(result.getTitle());
             txtDescricao.setText(result.getDescription());
             txtData.setText(result.getDates().get(0).getDate());
             txtValor.setText("US$ " + result.getPrices().get(0).getPrice());
-
-
-
             txtPaginas.setText(result.getPageCount().toString() + " pages");
 
             imagem.setOnClickListener(v -> {

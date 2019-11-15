@@ -1,6 +1,5 @@
 package com.example.dh_marvelapp.model.data.remote;
 
-import com.facebook.stetho.okhttp3.BuildConfig;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.util.concurrent.TimeUnit;
@@ -24,11 +23,10 @@ public class RetrofitService {
             httpClient.connectTimeout(30, TimeUnit.SECONDS);
             httpClient.writeTimeout(30, TimeUnit.SECONDS);
 
-                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-                httpClient.addInterceptor(httpLoggingInterceptor);
-                httpClient.addNetworkInterceptor(new StethoInterceptor());
-
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            httpClient.addInterceptor(httpLoggingInterceptor);
+            httpClient.addNetworkInterceptor(new StethoInterceptor());
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

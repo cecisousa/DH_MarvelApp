@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements OnClick {
 
     }
 
-
     public void initViews() {
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);

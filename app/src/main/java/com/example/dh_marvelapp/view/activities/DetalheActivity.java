@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 public class DetalheActivity extends AppCompatActivity {
 
     private ImageView imagem;
+    private ImageView bg;
     private TextView txtTitulo;
     private TextView txtDescricao;
     private TextView txtData;
@@ -33,6 +34,7 @@ public class DetalheActivity extends AppCompatActivity {
             Result result = getIntent().getParcelableExtra("Result");
 
             Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(imagem);
+            Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(bg);
 
             txtTitulo.setText(result.getTitle());
             txtDescricao.setText(result.getDescription());
@@ -63,6 +65,7 @@ public class DetalheActivity extends AppCompatActivity {
 
     public void initViews() {
         imagem = findViewById(R.id.imgHQ);
+        bg = findViewById(R.id.bg);
         txtTitulo= findViewById(R.id.txtTitulo);
         txtDescricao= findViewById(R.id.txtDescricao);
         txtData= findViewById(R.id.txtData);

@@ -37,7 +37,6 @@ public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecycl
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Result result = listaResults.get((position));
         holder.onBind(result);
-
         holder.itemView.setOnClickListener(v -> listener.click(result));
     }
 
@@ -53,13 +52,11 @@ public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecycl
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         private ImageView imagem;
         private TextView texto;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imagem = itemView.findViewById(R.id.capaHQ);
             texto = itemView.findViewById(R.id.tituloHQ);
         }

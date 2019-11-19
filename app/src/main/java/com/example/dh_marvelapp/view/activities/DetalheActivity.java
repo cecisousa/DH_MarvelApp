@@ -34,7 +34,7 @@ public class DetalheActivity extends AppCompatActivity {
             Result result = getIntent().getParcelableExtra("Result");
 
             Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(imagem);
-            Picasso.get().load(result.getThumbnail().getPath() + ".jpg").into(bg);
+            Picasso.get().load(result.getImages().get(0).getPath() + ".jpg").into(bg);
 
             txtTitulo.setText(result.getTitle());
             txtDescricao.setText(result.getDescription());
